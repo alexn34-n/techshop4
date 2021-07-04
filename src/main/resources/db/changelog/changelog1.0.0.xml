@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="init" author="alexn">
+        <createTable tableName="user">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(36)"/>
+            <column name="last_name" type="varchar(36)"/>
+            <column name="second_name" type="varchar(36)"/>
+            <column name="phone" type="varchar(14)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="login" type="varchar(36)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="varchar(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="varchar(36)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="product">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="count" type="int" defaultValue="0"/>
+        </createTable>
+
+        <createTable tableName="review">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="text" type="text"/>
+            <column name="product_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="fk_product_id" references="product(id)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="card">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="product_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="fk_product_id" references="product(id)"/>
+            </column>
+            <column name="count" type="int" defaultValue="0"/>
+            <column name="user_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="fk_user_id" references="user(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

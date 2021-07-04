@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="add-products" author="alexn">
+        <insert tableName="product">
+            <column name="id" valueComputed="uuid_generate_v4()"/>
+            <column name="name" value="Опрыск0ватель"/>
+            <column name="count" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="add-admin" author="alexn">
+        <modifyDataType tableName="user" columnName="password" newDataType="varchar(128)"/>
+        <insert tableName="user">
+            <column name="id" valueComputed="uuid_generate_v4()"/>
+            <column name="login" value="admin"/>
+            <column name="password" value="$2y$12$rxg3cYnpaZsNwAVuaiKZXeDb69dR.h9foNdfARmOp/9UBRLymKV22"/>
+            <column name="phone" value="123123"/>
+            <column name="role" value="admin"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="create-order-table" author="alexn">
+        <createTable tableName="order">
+            <column name="id" type="UUID"/>
+            <column name="created_at" type="TIMESTAMP WITH TIMEZONE"/>
+            <column name="delivered_at" type="TIMESTAMP WITH TIMEZONE"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="rename-order-table" author="alexn">
+        <renameTable oldTableName="order" newTableName="orders"/>
+    </changeSet>
+
+    <changeSet id="add-price-column" author="alexn">
+        <addColumn tableName="product">
+            <column name="price" type="NUMERIC"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

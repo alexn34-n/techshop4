@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="rename-table" author="alexn">
+        <renameTable oldTableName="card" newTableName="cart"/>
+
+        <sql>
+            insert into product(id, name, count) values(uuid_generate_v4(), 'Триммер',15);
+            insert into product(id, name, count) values(uuid_generate_v4(), 'Газонокосилка',10);
+            insert into product(id, name, count) values(uuid_generate_v4(), 'Минитрактор', 5);
+            insert into product(id, name, count) values(uuid_generate_v4(), 'Снегоуборщик',3);
+            insert into product(id, name, count) values(uuid_generate_v4(), 'Культиватор',4);
+            insert into product(id, name, count) values(uuid_generate_v4(), 'Элетростанция',8);
+            insert into product(id, name, count) values(uuid_generate_v4(), 'Коммпрессор',7);
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
