@@ -57,4 +57,8 @@ public class CartService {
     public List<Product> getProducts() {
         return products;
     }
+    public void clear() {
+        this.products.clear();
+    }
+
 }

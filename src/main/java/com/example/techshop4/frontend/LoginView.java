@@ -1,5 +1,7 @@
 package com.example.techshop4.frontend;
 
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -21,6 +23,11 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
         setJustifyContentMode(JustifyContentMode.CENTER);
 
         login.setAction("login");
+
+        var registrationButton = new Button("Регистрация", event -> {
+            UI.getCurrent().navigate("registration");
+        });
+
         add(new H1("Vaadin Shop"), login);
         List<String> foreachExample = List.of("123", "456", "789");
         for(String s: foreachExample) {
