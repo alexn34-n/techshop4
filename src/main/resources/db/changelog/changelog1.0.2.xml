@@ -47,6 +47,30 @@
             <column name="email" type="varchar(128)"/>
         </addColumn>
     </changeSet>
+    
+    <changeSet id="create-table-review" author="alexn">
+        <addColumn tableName="review">
+            <column name="is_moderated" type="boolean" defaultValue="false"/>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_user_id" references="user(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
 
+    <changeSet id="alter-table-cart" author="alexn">
+        <addPrimaryKey tableName="orders" columnNames="id"/>
+        <dropColumn tableName="cart" columnName="count"/>
+        <dropColumn tableName="cart" columnName="product_id"/>
+        <addColumn tableName="cart">
+            <column name="products" type="jsonb"/>
+        </addColumn>
+      <addColumn tableName="cart">
+          <column name="order_id" type="UUID">
+              <constraints foreignKeyName="fk_order_id" references="orders(id)"/>
+          </column>
+      </addColumn>
+
+
+    </changeSet>
 
 </databaseChangeLog>

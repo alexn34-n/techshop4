@@ -106,4 +106,13 @@ public class User {
         this.email = email;
         return this;
     }
+
+    public String getFIO() {
+
+        return String.format("%s %s %s",
+                getLastName()!=null?getLastName():"",
+                getName()!=null?getName():"",
+                getSecondName()!=null?getSecondName():"");
+
+    }
 }
