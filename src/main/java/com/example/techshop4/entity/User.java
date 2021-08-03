@@ -31,8 +31,7 @@ public class User {
     }
 
     public User setId(UUID id) {
-        this.id = id;
-        return this;
+        this.id = id;        return this;
     }
 
     public String getLogin() {
