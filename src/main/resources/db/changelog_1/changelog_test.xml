@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="init" author="alexn">
+        <sql>
+            create table user(
+            id uuid primary key,
+            login varchar(128),
+            password varchar(128),
+            role varchar(36)
+            );
+            create table product(
+            id uuid primary key,
+            name varchar(64),
+            count integer,
+            price numeric(8, 2)
+            );
+
+            insert into product(id, name, count, price) values('188c4450-e7db-4eb0-a499-15563d4ce054', 'trimmer', 12, 10000);
+            insert into product(id, name, count, price) values('6c4dc5fc-888c-4ec8-98ef-323f2fe121c4', 'tractor', 4, 30000);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
