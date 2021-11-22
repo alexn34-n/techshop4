@@ -17,6 +17,9 @@ public class CustomPrincipal implements UserDetails {
         this.user = user;
         this.authorities = List.of(new SimpleGrantedAuthority(user.getRole()));
     }
+    public User getUser() {
+        return this.user;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -52,5 +55,7 @@ public class CustomPrincipal implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }
 
