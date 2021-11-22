@@ -41,4 +41,12 @@
         </addColumn>
     </changeSet>
 
+
+    <changeSet id="add-email-column" author="alexn">
+        <addColumn tableName="user">
+            <column name="email" type="varchar(128)"/>
+        </addColumn>
+    </changeSet>
+
+
 </databaseChangeLog>
